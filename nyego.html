@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Házépítők Boltja és Festéküzlet | Nagyrábé</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            color: #222;
+            background: #f6f7f5;
+            line-height: 1.6;
+        }
+
+        /* NAVIGATION */
+
+        header {
+            background: #1f2d20;
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: auto;
+            padding: 16px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #d5a644;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: #d5a644;
+        }
+
+        /* HERO */
+
+        .hero {
+            min-height: 620px;
+            display: flex;
+            align-items: center;
+            background:
+                linear-gradient(rgba(20, 35, 23, 0.78),
+                rgba(20, 35, 23, 0.78)),
+                url("https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1600&q=80");
+            background-size: cover;
+            background-position: center;
+            color: white;
+        }
+
+        .hero-content {
+            width: 1200px;
+            margin: auto;
+            padding: 40px 25px;
+        }
+
+        .hero h1 {
+            font-size: 58px;
+            max-width: 800px;
+            line-height: 1.1;
+            margin-bottom: 25px;
+        }
+
+        .hero p {
+            font-size: 20px;
+            max-width: 650px;
+            margin-bottom: 35px;
+            color: #e5e5e5;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 28px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.25s;
+        }
+
+        .btn-primary {
+            background: #d5a644;
+            color: #1c1c1c;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            background: #e7b950;
+        }
+
+        .btn-outline {
+            border: 2px solid white;
+            color: white;
+        }
+
+        .btn-outline:hover {
+            background: white;
+            color: #222;
+        }
+
+        /* GENERAL */
+
+        section {
+            padding: 85px 25px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 15px;
+            font-size: 38px;
+            color: #1f2d20;
+        }
+
+        .section-text {
+            text-align: center;
+            max-width: 750px;
+            margin: 0 auto 50px;
+            color: #666;
+        }
+
+        /* CATEGORIES */
+
+        .categories {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 22px;
+        }
+
+        .card {
+            background: white;
+            padding: 35px 25px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: 0.25s;
+        }
+
+        .card:hover {
+            transform: translateY(-7px);
+        }
+
+        .icon {
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+
+        .card h3 {
+            margin-bottom: 10px;
+            color: #1f2d20;
+        }
+
+        /* ABOUT */
+
+        .about {
+            background: #1f2d20;
+            color: white;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about h2 {
+            font-size: 40px;
+            margin-bottom: 25px;
+        }
+
+        .about p {
+            color: #d9ddd9;
+            margin-bottom: 18px;
+        }
+
+        .about-box {
+            background: #d5a644;
+            color: #222;
+            padding: 45px;
+            border-radius: 10px;
+        }
+
+        .about-box h3 {
+            font-size: 27px;
+            margin-bottom: 20px;
+        }
+
+        /* GALLERY */
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .gallery-item {
+            height: 250px;
+            border-radius: 10px;
+            overflow: hidden;
+            background: #ddd;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 0.4s;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.08);
+        }
+
+        /* CONTACT */
+
+        .contact {
+            background: white;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .contact-box {
+            padding: 35px;
+            background: #f5f6f4;
+            border-radius: 10px;
+        }
+
+        .contact-box h3 {
+            font-size: 27px;
+            color: #1f2d20;
+            margin-bottom: 20px;
+        }
+
+        .contact-box p {
+            margin-bottom: 12px;
+        }
+
+        .facebook-btn {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 14px 22px;
+            background: #1877f2;
+            color: white;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .map {
+            min-height: 350px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .map iframe {
+            width: 100%;
+            height: 350px;
+            border: 0;
+        }
+
+        /* FOOTER */
+
+        footer {
+            background: #172018;
+            color: #aaa;
+            text-align: center;
+            padding: 30px 20px;
+        }
+
+        footer strong {
+            color: white;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 900px) {
+
+            .hero h1 {
+                font-size: 43px;
+            }
+
+            .categories {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .about-grid,
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .nav-links {
+                gap: 12px;
+                font-size: 14px;
+            }
+        }
+
+        @media (max-width: 600px) {
+
+            nav {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero {
+                min-height: 600px;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .hero p {
+                font-size: 17px;
+            }
+
+            .categories,
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 31px;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+<header>
+    <nav>
+        <div class="logo">
+            HÁZÉPÍTŐK <span>BOLTJA</span>
+        </div>
+
+        <ul class="nav-links">
+            <li><a href="#fooldal">Főoldal</a></li>
+            <li><a href="#termekek">Termékeink</a></li>
+            <li><a href="#rolunk">Rólunk</a></li>
+            <li><a href="#galeria">Galéria</a></li>
+            <li><a href="#kapcsolat">Kapcsolat</a></li>
+        </ul>
+    </nav>
+</header>
+
+
+<!-- HERO -->
+
+<section class="hero" id="fooldal">
+
+    <div class="hero-content">
+
+        <h1>
+            Minden, ami az építkezéshez és felújításhoz kell.
+        </h1>
+
+        <p>
+            Építőanyagok, festékek, barkács- és egyéb szükséges
+            termékek egy helyen – Nagyrábén.
+        </p>
+
+        <div class="buttons">
+
+            <a href="#termekek" class="btn btn-primary">
+                Termékeink
+            </a>
+
+            <a href="#kapcsolat" class="btn btn-outline">
+                Kapcsolat
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- PRODUCTS -->
+
+<section id="termekek">
+
+    <div class="container">
+
+        <h2 class="section-title">Termékkategóriák</h2>
+
+        <p class="section-text">
+            Nálunk számos építkezéshez, felújításhoz és otthoni munkákhoz
+            szükséges terméket megtalálhat.
+        </p>
+
+        <div class="categories">
+
+            <div class="card">
+                <div class="icon">🧱</div>
+                <h3>Építőanyagok</h3>
+                <p>
+                    Az építkezéshez szükséges alapvető anyagok.
+                </p>
+            </div>
+
+            <div class="card">
+                <div class="icon">🎨</div>
+                <h3>Festékek</h3>
+                <p>
+                    Beltéri és kültéri munkákhoz szükséges festékek.
+                </p>
+            </div>
+
+            <div class="card">
+                <div class="icon">🔨</div>
+                <h3>Szerszámok</h3>
+                <p>
+                    Barkácsoláshoz és különböző munkákhoz.
+                </p>
+            </div>
+
+            <div class="card">
+                <div class="icon">🏠</div>
+                <h3>Felújítás</h3>
+                <p>
+                    Termékek otthona szépítéséhez és felújításához.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ABOUT -->
+
+<section class="about" id="rolunk">
+
+    <div class="container">
+
+        <div class="about-grid">
+
+            <div>
+
+                <h2>Házépítők Boltja és Festéküzlet</h2>
+
+                <p>
+                    Üzletünkben igyekszünk segítséget nyújtani mindazoknak,
+                    akik építkezéshez, felújításhoz vagy otthoni munkákhoz
+                    keresnek megfelelő termékeket.
+                </p>
+
+                <p>
+                    Legyen szó kisebb javításról vagy nagyobb munkáról,
+                    várjuk vásárlóinkat üzletünkben Nagyrábén.
+                </p>
+
+            </div>
+
+            <div class="about-box">
+
+                <h3>📍 Találjon meg minket!</h3>
+
+                <p>
+                    <strong>4173 Nagyrábé</strong>
+                </p>
+
+                <p>
+                    Rétszentmiklósi út 80.
+                </p>
+
+                <br>
+
+                <a href="#kapcsolat" class="btn btn-outline"
+                   style="border-color:#222; color:#222;">
+                    Kapcsolati információk
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- GALLERY -->
+
+<section id="galeria">
+
+    <div class="container">
+
+        <h2 class="section-title">Galéria</h2>
+
+       
+        <div class="gallery">
+
+            <div class="gallery-item">
+                <img src="305296996_957124385220151_3466147593544970262_n.jpg"
+                     alt="Építőanyagok">
+            </div>
+
+            <div class="gallery-item">
+                <img src="486279829_1578456499753600_8783214020449729971_n.jpg"
+                     alt="Festékek">
+            </div>
+
+            <div class="gallery-item">
+                <img src="473007202_1098946155358769_4060538010404079694_n.jpg"
+                     alt="Szerszámok">
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- CONTACT -->
+
+<section class="contact" id="kapcsolat">
+
+    <div class="container">
+
+        <h2 class="section-title">Kapcsolat</h2>
+
+        <p class="section-text">
+            Keressen minket személyesen vagy látogassa meg Facebook oldalunkat.
+        </p>
+
+        <div class="contact-grid">
+
+            <div class="contact-box">
+
+                <h3>Elérhetőségek</h3>
+
+                <p>
+                    📍 <strong>Cím:</strong><br>
+                    4173 Nagyrábé<br>
+                    Rétszentmiklósi út 80.
+                </p>
+
+                <p>
+                    📞 <strong>Telefon:</strong><br>
+                    Ide kerülhet a telefonszám
+                </p>
+
+                <p>
+                    🕒 <strong>Nyitvatartás:</strong><br>
+                        <img src="nyitvartas.png" alt="Nyitvatartás" class="nyitvatartas">
+                        <style>
+                            .nyitvatartas {
+                             max-width: 65%;
+                            height: auto;
+                                            }
+                        </style>
+
+                </p>
+
+                <a class="facebook-btn"
+                   href="https://www.facebook.com/p/Házépítők-Boltja-és-Festéküzlet-100027677965647/"
+                   target="_blank">
+
+                    Facebook oldal megnyitása
+
+                </a>
+
+            </div>
+
+
+            <div class="map">
+
+                <iframe
+                    src="https://www.google.com/maps?q=Nagyrábé,+Rétszentmiklósi+út+80&output=embed"
+                    loading="lazy">
+                </iframe>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<footer>
+
+    <p>
+        <strong>Házépítők Boltja és Festéküzlet</strong>
+    </p>
+
+    <p>
+        © 2026 Minden jog fenntartva.
+    </p>
+
+</footer>
+
+</body>
+</html>
+```
